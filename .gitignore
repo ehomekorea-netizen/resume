@@ -1,0 +1,17 @@
+node_modules/
+.next/
+.env
+dist/
+build/
+.agents/
+__pycache__/
+*.pyc
+verify_text.py
+verify_html.py
+verify_final_html.py
+verify_image_paths.py
+
+# Exclude sub-projects to avoid pushing heavy codes and API keys/secrets
+biblegram/
+carrot-donation-dashboard/
+lecture-payment-dashboard/
