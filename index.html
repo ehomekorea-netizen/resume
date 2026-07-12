@@ -1166,7 +1166,13 @@
     // 2. RENDER GALLERY (Rigid low-contrast columns)
     // ==========================================
     const galleryGrid = document.getElementById('gallery-grid');
-    const galleryLectures = lectures.filter(l => l.images.length > 0);
+    const galleryLectures = lectures
+      .filter(l => l.images.length > 0)
+      .sort((a, b) => {
+        const dateA = a.date.split(' ~ ')[0];
+        const dateB = b.date.split(' ~ ')[0];
+        return dateB.localeCompare(dateA);
+      });
     
     let lightboxActiveImages = [];
     let currentLightboxIdx = 0;
