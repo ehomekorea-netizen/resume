@@ -351,5 +351,135 @@
       "./images/2a23e4f0-bfa1-81d9-bd0a-dfa31af8929b_1.jpg",
       "./images/2a23e4f0-bfa1-81d9-bd0a-dfa31af8929b_2.jpg"
     ]
+  },
+  {
+    "id": "64a564c2-94c9-49a3-b229-60ea33701ae6",
+    "title": "AI와 앱스 스크립트를 활용한 행정업무 자동화",
+    "date": "2026.05.19",
+    "category": [
+      "외부강의"
+    ],
+    "location": "해남종합사회복지관",
+    "images": []
+  },
+  {
+    "id": "89d41d88-3724-4baf-9c2a-865c5fc90b4b",
+    "title": "Grok·Vrew 활용 영상 기획·생성·자막 자동화",
+    "date": "2026.05.27",
+    "category": [
+      "외부강의"
+    ],
+    "location": "해남종합사회복지관",
+    "images": []
+  },
+  {
+    "id": "1fc57563-2b6a-4ac6-a812-22100c0cc2a5",
+    "title": "AI 이미지 제작을 위한 프롬프트 실습",
+    "date": "2026.06.10",
+    "category": [
+      "외부강의"
+    ],
+    "location": "해남종합사회복지관",
+    "images": []
+  },
+  {
+    "id": "b00a5c0d-d114-4306-83a5-2ed3454f2cb3",
+    "title": "Canva·AI 활용 기관 홍보물 메시지 설계",
+    "date": "2026.06.17",
+    "category": [
+      "외부강의"
+    ],
+    "location": "해남종합사회복지관",
+    "images": []
+  },
+  {
+    "id": "a668bc1c-5aec-4a31-9a98-9c26f153c9db",
+    "title": "Canva·AI 활용 영상 콘텐츠 제작",
+    "date": "2026.06.24",
+    "category": [
+      "외부강의"
+    ],
+    "location": "해남종합사회복지관",
+    "images": []
+  },
+  {
+    "id": "5672babc-de84-4c4e-a82f-5fbc8ddc1038",
+    "title": "AI로 완성하는 기획·요약·보고 업무 자동화",
+    "date": "2026.05.22",
+    "category": [
+      "외부강의"
+    ],
+    "location": "혜림종합복지관",
+    "images": []
+  },
+  {
+    "id": "0bb99f1c-50e6-45d8-a85d-11bf39947191",
+    "title": "AI와 앱스 스크립트를 활용한 행정업무 자동화",
+    "date": "2026.06.19",
+    "category": [
+      "외부강의"
+    ],
+    "location": "혜림종합복지관",
+    "images": []
+  },
+  {
+    "id": "cff9e818-171e-4da1-b772-776bdc263a78",
+    "title": "전남창의인재교육원(우리협의회) - Grok·Vrew 활용 영상 기획·생성·자막 자동화",
+    "date": "2026.05.26",
+    "category": [
+      "외부강의"
+    ],
+    "location": "전남창의인재교육원",
+    "images": []
+  },
+  {
+    "id": "e7f12a69-e9e8-40c1-b672-c5de494c2a74",
+    "title": "전라남도과학교육원 특강 (보조강사)",
+    "date": "2026.06.16",
+    "category": [
+      "외부강의"
+    ],
+    "location": "전라남도과학교육원",
+    "images": []
+  },
+  {
+    "id": "14e62702-c8e6-4bf7-8e53-018b7aabefd8",
+    "title": "완도수산고등학교 AI 교육",
+    "date": "2026.07.07",
+    "category": [
+      "외부강의"
+    ],
+    "location": "완도수산고등학교",
+    "images": []
+  },
+  {
+    "id": "73470d36-bb51-4cc7-9c83-3b4da79b1576",
+    "title": "나주 봉황중학교 [디지털새싹] AI크리에이터 강의 (1, 2일차)",
+    "date": "2026.07.08 ~ 2026.07.09",
+    "category": [
+      "외부강의"
+    ],
+    "location": "나주 봉황중학교",
+    "images": []
+  },
+  {
+    "id": "57a2db8e-32fe-4e0f-9cd0-c8bd6d58dff7",
+    "title": "따뜻한 세상을 만드는 코드: AI / 코드 in AI 컬처로드",
+    "date": "2026.06.13",
+    "category": [
+      "외부강의"
+    ],
+    "location": "기타 지역 기관",
+    "images": []
+  },
+  {
+    "id": "081fd580-42cb-454d-bb97-8c3e1bff6d57",
+    "title": "영암군가족센터 - 노션 가계부 교육",
+    "date": "2026.06.25",
+    "category": [
+      "외부강의"
+    ],
+    "location": "영암군가족센터",
+    "images": []
   }
 ]
