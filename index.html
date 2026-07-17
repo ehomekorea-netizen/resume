@@ -585,6 +585,48 @@
 
   </main>
 
+  <!-- FALLBACK MAIL MODAL (Tactile warm overlay) -->
+  <div id="mail-modal" class="fixed inset-0 z-50 bg-[#2d2c2a]/80 backdrop-blur-md hidden flex-col items-center justify-center p-6">
+    <div class="bg-white border border-brandBorder max-w-lg w-full rounded-xl p-8 space-y-6 shadow-lg relative select-text">
+      <button onclick="closeMailModal()" class="absolute top-4 right-4 w-8 h-8 rounded border border-brandBorder hover:border-brandBlue hover:text-brandBlue flex items-center justify-center text-brandText transition-colors">
+        <i class="ph ph-x text-lg"></i>
+      </button>
+      
+      <div class="space-y-2">
+        <h3 class="text-xl font-bold text-brandText">출강 의뢰 이메일 안내</h3>
+        <p class="text-xs text-brandMuted leading-relaxed">
+          시스템 이메일 앱이 자동으로 열리지 않는 경우, 아래 수신처와 본문을 복사하여 메일 서비스(네이버, Gmail 등)에서 강사님 메일로 직접 발송해주시기 바랍니다.
+        </p>
+      </div>
+      
+      <div class="space-y-4 font-mono text-xs">
+        <div class="border border-brandBorder rounded p-4 bg-brandPanel space-y-2">
+          <div class="flex justify-between border-b border-brandBorder/50 pb-2">
+            <span class="text-brandMuted font-bold">수신처 (TO)</span>
+            <span class="text-brandText font-bold">wlstlfdl11@kakao.com</span>
+          </div>
+          <div class="flex justify-between border-b border-brandBorder/50 pb-2">
+            <span class="text-brandMuted font-bold">제목 (SUBJECT)</span>
+            <span id="modal-subject" class="text-brandText font-bold truncate max-w-[250px]"></span>
+          </div>
+          <div class="space-y-1">
+            <span class="text-brandMuted font-bold block">본문 (BODY)</span>
+            <textarea id="modal-body" readonly class="w-full bg-white border border-brandBorder p-3 text-xs text-brandText rounded h-40 focus:outline-none resize-none"></textarea>
+          </div>
+        </div>
+      </div>
+      
+      <div class="flex gap-4">
+        <button onclick="copyMailBody()" class="flex-1 py-3 bg-brandBlue hover:bg-[#2d3d4a] text-white font-mono text-xs font-bold uppercase tracking-widest rounded transition-all flex items-center justify-center gap-2">
+          <i class="ph ph-copy"></i> 본문 복사하기
+        </button>
+        <button onclick="closeMailModal()" class="px-6 py-3 border border-brandBorder hover:bg-brandBg text-brandMuted font-mono text-xs font-bold uppercase tracking-widest rounded transition-all">
+          닫기
+        </button>
+      </div>
+    </div>
+  </div>
+
   <!-- LIGHTBOX / PHOTO PREVIEW OVERLAY (Tactile warm overlay) -->
   <div id="lightbox" class="fixed inset-0 z-50 bg-[#2d2c2a]/95 backdrop-blur-md hidden flex-col items-center justify-center p-6">
     <button id="lightbox-close" class="absolute top-6 right-6 w-10 h-10 rounded border border-white/20 hover:border-brandSky hover:text-brandSky flex items-center justify-center text-white transition-colors">
@@ -1347,7 +1389,7 @@
     });
 
     // ==========================================
-    // 5. SEND PROPOSAL VIA EMAIL (mailto link)
+    // 5. SEND PROPOSAL VIA EMAIL (mailto link & fallback modal)
     // ==========================================
     window.sendProposal = function() {
       const name = document.getElementById('contact-name').value.trim();
@@ -1360,27 +1402,49 @@
       }
 
       const email = 'wlstlfdl11@kakao.com';
-      const subject = encodeURIComponent(`[출강 의뢰] ${name} 담당자님의 문의`);
-      const body = encodeURIComponent(
-        `안녕하세요 오진실 강사님,
+      const subjectText = `[출강 의뢰] ${name} 담당자님의 문의`;
+      const bodyText = `안녕하세요 오진실 강사님,\n\n` +
+        `아래와 같이 출강 제안을 발송합니다.\n\n` +
+        `■ 기관 및 담당자명: ${name}\n` +
+        `■ 연락처 또는 이메일: ${contact}\n\n` +
+        `■ 의뢰 세부내용:\n${message}\n\n` +
+        `확인 후 연락 부탁드립니다. 감사합니다.`;
 
-` +
-        `아래와 같이 출강 제안을 발송합니다.
+      // Set values to modal
+      document.getElementById('modal-subject').innerText = subjectText;
+      document.getElementById('modal-body').value = bodyText.replace(/\\n/g, '\n');
 
-` +
-        `■ 기관 및 담당자명: ${name}
-` +
-        `■ 연락처 또는 이메일: ${contact}
+      // Show modal
+      const modal = document.getElementById('mail-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
 
-` +
-        `■ 의뢰 세부내용:
-${message}
+      // Trigger mailto link
+      const mailtoUrl = `mailto:${email}?subject=${encodeURIComponent(subjectText)}&body=${encodeURIComponent(bodyText.replace(/\\n/g, '\n'))}`;
+      
+      setTimeout(() => {
+        window.location.href = mailtoUrl;
+      }, 300);
+    };
 
-` +
-        `확인 후 연락 부탁드립니다. 감사합니다.`
-      );
+    window.closeMailModal = function() {
+      const modal = document.getElementById('mail-modal');
+      modal.classList.remove('flex');
+      modal.classList.add('hidden');
+    };
 
-      window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+    window.copyMailBody = function() {
+      const bodyTextArea = document.getElementById('modal-body');
+      bodyTextArea.select();
+      bodyTextArea.setSelectionRange(0, 99999);
+      
+      try {
+        navigator.clipboard.writeText(bodyTextArea.value);
+        alert('본문 내용이 클립보드에 복사되었습니다! 메일 창에 붙여넣어 주세요.');
+      } catch (err) {
+        document.execCommand('copy');
+        alert('본문 내용이 복사되었습니다!');
+      }
     };
 
   </script>
